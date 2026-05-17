@@ -1,0 +1,211 @@
+html<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수제 도라야끼 - 정성을 빚다</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --primary-brown: #5D4037;
+            --soft-beige: #F5F5DC;
+            --accent-gold: #C5A059;
+            --text-dark: #3E2723;
+            --bg-light: #FFFBF0;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            word-break: keep-all;
+        }
+
+        h1, h2, h3, .logo { font-family: 'Nanum+Myeongjo', serif; }
+
+        /* --- 상단 네비게이션 & 로고 --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 251, 240, 0.9);
+            backdrop-filter: blur(5px);
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-brown);
+            letter-spacing: 2px;
+        }
+
+        /* --- 애니메이션 --- */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* --- 1. 메인 비주얼 --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+        }
+        .hero video, .hero-img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.5);
+        }
+        .hero-content h1 { font-size: 3.5rem; margin-bottom: 20px; }
+
+        /* --- 공통 섹션 --- */
+        section { padding: 100px 20px; max-width: 1000px; margin: 0 auto; text-align: center; }
+        .section-title { font-size: 2rem; margin-bottom: 50px; color: var(--primary-brown); position: relative; display: inline-block; }
+        .section-title::after { content: ""; display: block; width: 40%; height: 2px; background: var(--accent-gold); margin: 15px auto 0; }
+
+        /* --- 2. 메뉴 가격표 --- */
+        .menu-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            text-align: left;
+            margin-top: 30px;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dotted #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .menu-name { font-weight: 500; }
+        .menu-price { color: var(--accent-gold); font-weight: bold; }
+
+        /* --- 3. 사진 갤러리 --- */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        .gallery-item { border-radius: 10px; overflow: hidden; height: 300px; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .gallery-item img:hover { transform: scale(1.05); }
+
+        /* --- 4. 주문 안내 --- */
+        .order-box {
+            background: var(--primary-brown);
+            color: var(--white);
+            padding: 60px 40px;
+            border-radius: 20px;
+        }
+        .btn-order {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: white;
+            padding: 18px 50px;
+            border-radius: 50px;
+            margin-top: 30px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .btn-order:hover { background: #b08e4d; transform: translateY(-3px); }
+
+        /* --- 5. 연락처 --- */
+        footer { padding: 60px 20px; background: #eee; font-size: 0.9rem; color: #777; }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            .menu-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">수제: 도라야끼</div>
+        <div style="font-size: 0.8rem; letter-spacing: 1px;">PREMIUM DESSERT</div>
+    </nav>
+
+    <header class="hero">
+        <video autoplay muted loop playsinline poster="main.jpg">
+            <source src="steam.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <p class="fade-in" style="letter-spacing: 3px; margin-bottom: 10px;">순수함만을 담은</p>
+            <h1 class="fade-in">달콤한 위로</h1>
+            <p class="fade-in">매일 아침 정성으로 구워냅니다</p>
+        </div>
+    </header>
+
+    <section id="intro">
+        <h2 class="section-title fade-in">브랜드 이야기</h2>
+        <p class="fade-in" style="max-width: 600px; margin: 0 auto; color: #555;">
+            인위적인 첨가물 없이 오직 자연에서 온 재료로만 만듭니다.<br>
+            부드러운 카스텔라 피와 직접 졸인 통팥의 조화를 경험해보세요.
+        </p>
+    </section>
+
+    <!-- 추가된 메뉴 섹션 -->
+    <section id="menu" style="background-color: #fcfcfc;">
+        <h2 class="section-title fade-in">메뉴 안내</h2>
+        <div class="menu-container fade-in">
+            <div>
+                <div class="menu-item"><span class="menu-name">클래식 통팥 도라야끼</span> <span class="menu-price">1,200원</span></div>
+                <div class="menu-item"><span class="menu-name">부드러운 완두 도라야끼</span> <span class="menu-price">3,500원</span></div>
+                <div class="menu-item"><span class="menu-name">고소한 밤 도라야끼</span> <span class="menu-price">4,000원</span></div>
+            </div>
+            <div>
+                <div class="menu-item"><span class="menu-name">제주 말차 크림 도라야끼</span> <span class="menu-price">4,500원</span></div>
+                <div class="menu-item"><span class="menu-name">프리미엄 선물세트 (6구)</span> <span class="menu-price">22,000원</span></div>
+                <div class="menu-item"><span class="menu-name">프리미엄 선물세트 (10구)</span> <span class="menu-price">12,000원</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2 class="section-title fade-in">갤러리</h2>
+        <div class="gallery fade-in">
+            <div class="gallery-item"><img src="food1.png" alt="제품사진1"></div>
+            <div class="gallery-item"><img src="food2.png" alt="제품사진2"></div>
+            <div class="gallery-item"><img src="package.png" alt="제품사진3"></div>
+        </div>
+    </section>
+
+    <section id="order">
+        <div class="order-box fade-in">
+            <h2 style="color: white; margin-bottom: 15px;">주문하기</h2>
+            <p>신선한 배송을 위해 한정 수량만 제작합니다.</p>
+            <a href="#" class="btn-order">온라인 주문 바로가기</a>
+        </div>
+    </section>
+
+    <footer style="text-align: center;">
+        <div class="logo" style="margin-bottom: 20px; font-size: 1.2rem;">수제: 도라야끼</div>
+        <p> |경기 남양주시 늘을1로16번안길 3-20 1층 대표: 이병만</p>
+        <p>사업자등록번호: 123-45-67890 | TEL: 010-3780-1860</p>
+        <p style="margin-top: 20px;">© 2024 Handmade Dorayaki. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
